@@ -7,6 +7,8 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import Heading from "../heading/Heading";
+import { IExperiencesList } from "../../interface/api-element";
+import Experiences from "../experiences/Experiences";
 
 enum EPageSize {
   letter = "LETTER",
@@ -30,6 +32,10 @@ Font.register({
   ],
 });
 
+interface IProps {
+  experiences: Array<IExperiencesList>
+}
+
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
@@ -43,10 +49,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const Layout = () => (
+const Layout = ({experiences}: IProps) => (
   <Document>
     <Page size={EPageSize.letter} style={styles.page}>
       <Heading />
+      <Experiences experiences={experiences} />
       <View style={styles.section}>
         <Text>Section #2</Text>
       </View>

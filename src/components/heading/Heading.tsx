@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "row",
     backgroundColor: "#282c34",
-    borderBottom: "2pt solid #f2f2f2",
     justifyContent: "space-between",
+    border: 'none',
     color: "#f2f2f2",
     padding: "20pt 20pt 24pt 20pt",
   },
