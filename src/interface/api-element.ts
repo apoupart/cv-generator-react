@@ -2,8 +2,8 @@ export interface IExperience {
     company: string;
     title: string;
     description: string;
-    startDate: Date,
-    EndDate?: Date,
+    startDate: string,
+    endDate?: string,
     isCurrentJob: boolean;
     skillList?: string;
 }
