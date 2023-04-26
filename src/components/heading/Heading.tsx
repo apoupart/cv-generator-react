@@ -1,4 +1,9 @@
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { IContactInformation } from "../../interface/api-element";
+
+interface IProps {
+  informations: IContactInformation
+}
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -7,6 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     color: "#f2f2f2",
     padding: "20pt 20pt 24pt 20pt",
+    marginBottom: 20,
   },
   heading: {
     flexDirection: "column",
@@ -31,17 +37,20 @@ const styles = StyleSheet.create({
 });
 
 
-const Heading = () => (
-  <View style={styles.wrapper}>
-    <View style={styles.heading}>
-      <Text style={styles.title}>Lorem Ipsum</Text>
-      <Text style={styles.expertise}>Dolor si amet</Text>
+const Heading = ({informations}: IProps) => {
+  const {name, email, jobTitle, phoneNumber} = informations;
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.heading}>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.expertise}>{jobTitle}</Text>
+      </View>
+      <View style={styles.informations}>
+        <Text>{phoneNumber}</Text>
+        <Text>{email}</Text>
+      </View>
     </View>
-    <View style={styles.informations}>
-      <Text>(888) 888-8888</Text>
-      <Text>dummy@email.com</Text>
-    </View>
-  </View>
-);
+  )
+};
 
 export default Heading;

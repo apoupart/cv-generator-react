@@ -17,18 +17,16 @@ const useDateDifference = (startDate: string, endDate: string, isCurrentJob: boo
       const monthDifference: number = monthDiff(startDateObject, endDateObject);
 
       if (isCurrentJob) {
-          setDate(`Depuis ${startDateObject.toLocaleString('fr-CA', { month: 'long' })} ${startDateObject.getFullYear()}`);
+        setDate(`Depuis ${startDateObject.toLocaleString('fr-CA', { month: 'long' })} ${startDateObject.getFullYear()}`);
       } else if (monthDifference / 12 > 1) {
-        setDate(`${Math.round(monthDifference / 12)} ans, ${monthDifference % 12} mois`);
+        setDate(`De ${startDateObject.toLocaleString('fr-CA', { month: 'long' })} ${startDateObject.getFullYear()} à ${endDateObject.toLocaleString('fr-CA', { month: 'long' })} ${endDateObject.getFullYear()} (${Math.trunc(monthDifference / 12)} ans, ${monthDifference % 12} mois)`);
       } else if (monthDifference / 12 == 1) {
-        setDate(`${Math.round(monthDifference / 12)} an, ${monthDifference % 12} mois`);
+        setDate(`De ${startDateObject.toLocaleString('fr-CA', { month: 'long' })} ${startDateObject.getFullYear()} à ${endDateObject.toLocaleString('fr-CA', { month: 'long' })} ${endDateObject.getFullYear()} (${Math.trunc(monthDifference / 12)} an, ${monthDifference % 12} mois)`);
       } else {
-          setDate(`${monthDifference} mois`);
+        setDate(`De ${startDateObject.toLocaleString('fr-CA', { month: 'long' })} ${startDateObject.getFullYear()} à ${endDateObject.toLocaleString('fr-CA', { month: 'long' })} ${endDateObject.getFullYear()} (${monthDifference % 12} mois)`);
       }
 
-
-      
-    }, [startDate, endDate]);
+    }, [startDate, endDate, isCurrentJob]);
   
     return date;
   };

@@ -1,17 +1,18 @@
 
 import { View, StyleSheet } from "@react-pdf/renderer";
-import { IExperiencesList } from "../../interface/api-element";
-import Experience from "../experience/Experience";
+import { IScholarshipList } from "../../interface/api-element";
+import Scholarship from "../scholarship/Scholarship";
 
 interface IProps {
-  experiences: Array<IExperiencesList>
+  scholarships: Array<IScholarshipList>
 }
 
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: "column",
+    gap: '24',
     color: "#f2f2f2",
-    padding: "0 20pt 28pt 20pt",
+    padding: "20pt 20pt 24pt 20pt",
   },
   title: {
     lineHeight: '1rem',
@@ -30,13 +31,13 @@ const styles = StyleSheet.create({
 });
 
 
-const Experiences = ({experiences}: IProps) => (
+const Scholarships = ({scholarships}: IProps) => (
   <View style={styles.wrapper}>
-    {experiences.map((experience: IExperiencesList) => (
-     <Experience key={experience.id} attributes={experience.attributes} />
+    {scholarships.map((experience: IScholarshipList) => (
+     <Scholarship key={experience.id} attributes={experience.attributes} />
     ))}
     
   </View>
 );
 
-export default Experiences;
+export default Scholarships;

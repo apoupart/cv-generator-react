@@ -7,8 +7,14 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import Heading from "../heading/Heading";
-import { IExperiencesList } from "../../interface/api-element";
+import {
+  IContactInformation,
+  IExperiencesList,
+  IScholarshipList,
+} from "../../interface/api-element";
 import Experiences from "../experiences/Experiences";
+import About from "../about/about";
+import Scholarships from "../scholarships/Scholarships";
 
 enum EPageSize {
   letter = "LETTER",
@@ -33,30 +39,40 @@ Font.register({
 });
 
 interface IProps {
-  experiences: Array<IExperiencesList>
+  experiences: Array<IExperiencesList>;
+  scholarships: Array<IScholarshipList>;
+  informations: IContactInformation;
 }
 
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#f2f2f2",
-    fontFamily: 'Fira Code',
+    backgroundColor: "#2f333d",
+    fontFamily: "Fira Code",
   },
   section: {
     margin: 10,
     padding: 10,
     flexGrow: 1,
   },
+  title: {
+    fontSize: 18,
+    padding: '4 20 0 20',
+    color: '#f2f2f2',
+    fontWeight: 'semibold',
+  }
 });
 
-const Layout = ({experiences}: IProps) => (
+const Layout = ({ experiences, informations, scholarships }: IProps) => (
   <Document>
     <Page size={EPageSize.letter} style={styles.page}>
-      <Heading />
+      <Heading informations={informations} />
+      <Text style={styles.title}>À propos</Text>
+      <About informations={informations} />
+      <Text style={styles.title}>Expérience</Text>
       <Experiences experiences={experiences} />
-      <View style={styles.section}>
-        <Text>Section #2</Text>
-      </View>
+      <Text style={styles.title}>Études</Text>
+      <Scholarships scholarships={scholarships} />
     </Page>
   </Document>
 );
