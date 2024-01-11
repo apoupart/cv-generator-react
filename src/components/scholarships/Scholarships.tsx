@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: '24',
     color: "#f2f2f2",
-    padding: "20pt 20pt 24pt 20pt",
+    padding: "12pt 20pt 0 20pt",
   },
   title: {
     lineHeight: '1rem',

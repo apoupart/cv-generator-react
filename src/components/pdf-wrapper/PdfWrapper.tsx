@@ -47,6 +47,12 @@ function PdfWrapper() {
         options
       );
       const json = await res.json();
+      const res2 = await fetch(
+        `${import.meta.env.VITE_STRAPI_URL}users?filters[username][$eq]=apoupart`,
+        options
+      );
+      const json2 = await res2.json();
+      console.log('json2', json2);
       setScholarship(json?.data || []);
     })();
   }, []);

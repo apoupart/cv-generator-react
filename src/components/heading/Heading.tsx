@@ -1,8 +1,8 @@
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Link } from "@react-pdf/renderer";
 import { IContactInformation } from "../../interface/api-element";
 
 interface IProps {
-  informations: IContactInformation
+  informations: IContactInformation;
 }
 
 const styles = StyleSheet.create({
@@ -18,39 +18,74 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
-    lineHeight: '1rem',
+    lineHeight: 1,
     fontSize: "26pt",
     color: "#f2f2f2",
   },
   expertise: {
     fontSize: "14pt",
+    lineHeight: 1,
     color: "#abb2ba",
+    marginBottom: 8,
   },
   informations: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
     flexDirection: "column",
     color: "#f2f2f2",
     fontSize: "14pt",
     marginBottom: 4,
-    textAlign: 'right',
+    textAlign: "right",
+  },
+  website: {
+    color: "#f2f2f2",
+    fontSize: 10,
+  },
+  link: {
+    color: "#f2f2f2",
+    fontSize: 14,
+    textDecoration: "none",
   },
 });
 
-
-const Heading = ({informations}: IProps) => {
-  const {name, email, jobTitle, phoneNumber} = informations;
+const Heading = ({ informations }: IProps) => {
+  const {
+    name,
+    email,
+    jobTitle,
+    phoneNumber,
+    websiteUrl = "",
+    githubUrl = "",
+  } = informations;
   return (
     <View style={styles.wrapper}>
       <View style={styles.heading}>
         <Text style={styles.title}>{name}</Text>
         <Text style={styles.expertise}>{jobTitle}</Text>
+        {websiteUrl && (
+          <Link src={websiteUrl} style={styles.website}>
+            {websiteUrl.replace("https://", "")}
+          </Link>
+        )}
+        {githubUrl && (
+          <Link src={githubUrl} style={styles.website}>
+            {githubUrl.replace("https://", "")}
+          </Link>
+        )}
       </View>
       <View style={styles.informations}>
-        <Text>{phoneNumber}</Text>
-        <Text>{email}</Text>
+        {phoneNumber && (
+          <Link src={`tel:${phoneNumber}`} style={styles.link}>
+            {phoneNumber.replace("https://", "")}
+          </Link>
+        )}
+        {email && (
+          <Link src={`mailto:${email}`} style={styles.link}>
+            {email.replace("https://", "")}
+          </Link>
+        )}
       </View>
     </View>
-  )
+  );
 };
 
 export default Heading;

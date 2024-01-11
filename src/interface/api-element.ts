@@ -19,6 +19,8 @@ export interface IContactInformation {
     email: string;
     phoneNumber: string;
     about: string;
+    websiteUrl?: string;
+    githubUrl?: string;
 }
 
 export interface IScholarship {
