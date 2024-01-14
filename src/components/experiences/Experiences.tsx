@@ -30,12 +30,22 @@ const styles = StyleSheet.create({
 });
 
 
-const Experiences = ({experiences}: IProps) => (
+const Experiences = ({ experiences }: IProps) => (
   <View style={styles.wrapper}>
-    {experiences.map((experience: IExperiencesList) => (
-     <Experience key={experience.id} attributes={experience.attributes} />
+    {experiences.map((experience: IExperiencesList, index: number) => (
+      <Experience
+        key={experience.id}
+        isNextSameCompany={
+          experiences[index + 1]?.attributes?.company ===
+          experience.attributes.company
+        }
+        isPrevSameCompany={
+          experiences[index - 1]?.attributes?.company ===
+          experience.attributes.company
+        }
+        attributes={experience.attributes}
+      />
     ))}
-    
   </View>
 );
 

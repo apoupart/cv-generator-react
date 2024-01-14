@@ -1,52 +1,23 @@
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View } from "@react-pdf/renderer";
 import { IExperience } from "../../interface/api-element";
 import useDateDifference from "../../hook/useDateDifference";
+import { style1, style2 } from "./ExperienceStyle";
 
 interface IProps {
   attributes: IExperience;
+  isNextSameCompany?: boolean;
+  isPrevSameCompany?: boolean;
 }
 
-const styles = StyleSheet.create({
-  title: {
-    lineHeight: "1rem",
-    fontSize: 16,
-    color: "#2f333d",
-    paddingTop: 16,
-    fontWeight: 'normal',
-  },
-  subtitle: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: "#548199",
-  },
-  date: {
-    fontSize: 11,
-    color: "#282c34",
-  },
-  subtitleWrapper: {
-    alignItems: 'center',
-    marginBottom: 3,
-    flexDirection: 'row',
-    gap: 8,
-  },
-  description: {
-    marginTop: '2pt',
-    lineHeight: 1.25,
-    fontSize: 10,
-    marginBottom: '4pt',
-    color: 'black',
-  },
-  skill: {
-    display: 'flex',
-    flexDirection: 'row',
-    fontSize: 8,
-    textTransform: 'uppercase',
-    fontWeight: 'light',
-    color: '#282c34',
+const Experience = ({
+  attributes,
+  isNextSameCompany = false,
+  isPrevSameCompany = false,
+}: IProps) => {
+  let styles = style2;
+  if (true) {
+    styles = style1;
   }
-});
-
-const Experience = ({attributes}: IProps) => {
   const {
     company,
     title,
@@ -57,17 +28,31 @@ const Experience = ({attributes}: IProps) => {
     skillList,
   } = attributes;
 
-  const date: string = useDateDifference(startDate, endDate || '', isCurrentJob);
+  const date: string = useDateDifference(
+    startDate,
+    endDate || "",
+    isCurrentJob
+  );
 
-  const skill = skillList?.split(',').map((skill, index) => (
-    <Text>{skill} {index !== (skillList.split(',').length - 1) && (<>&bull;</>) }</Text>
+  const skill = skillList?.split(",").map((skill, index) => (
+    <Text>
+      {skill} {index !== skillList.split(",").length - 1 && <>&bull;</>}
+    </Text>
   ));
 
   return (
-    <View wrap={false}>
-      <Text style={styles.title}>{title}</Text>
+    <View
+      wrap={false}
+      style={[
+        styles?.experience,
+        isNextSameCompany && styles?.isSame,
+        isPrevSameCompany && styles?.isPrev,
+      ]}
+    >
+      <View style={styles?.companyLine} />
+      {!isPrevSameCompany && <Text style={styles.title}>{company}</Text>}
       <View style={styles.subtitleWrapper}>
-        <Text style={styles.subtitle}>{company}</Text>
+        <Text style={styles.subtitle}>{title}</Text>
         {!!date && <Text style={styles.date}>&bull;&nbsp;{date}</Text>}
       </View>
       <Text style={styles.description}>{description}</Text>
