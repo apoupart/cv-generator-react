@@ -29,6 +29,7 @@ function PdfWrapper() {
         options
       );
       const json = await res.json();
+      console.log('experience', json);
       setExperienceList(json?.data || []);
     })();
 

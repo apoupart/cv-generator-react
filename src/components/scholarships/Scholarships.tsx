@@ -1,10 +1,11 @@
 
 import { View, StyleSheet } from "@react-pdf/renderer";
-import { IScholarshipList } from "../../interface/api-element";
+import { ICardAttribute, IExperiencesList, IScholarshipList } from "../../interface/api-element";
 import Scholarship from "../scholarship/Scholarship";
+import Card from "../card/Card";
 
 interface IProps {
-  scholarships: Array<IScholarshipList>
+  scholarships: Array<IExperiencesList>
 }
 
 const styles = StyleSheet.create({
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: '24',
     color: "#f2f2f2",
-    padding: "12pt 20pt 0 20pt",
+    padding: "0 20pt 28pt 20pt",
   },
   title: {
     lineHeight: '1rem',
@@ -31,12 +32,22 @@ const styles = StyleSheet.create({
 });
 
 
-const Scholarships = ({scholarships}: IProps) => (
+const Scholarships = ({ scholarships }: IProps) => (
   <View style={styles.wrapper}>
-    {scholarships.map((experience: IScholarshipList) => (
-     <Scholarship key={experience.id} attributes={experience.attributes} />
+    {scholarships.map((experience: IExperiencesList, index: number) => (
+      <Card
+        key={experience.id}
+        isNextSameCompany={
+          scholarships[index + 1]?.attributes?.location ===
+          experience.attributes.location
+        }
+        isPrevSameCompany={
+          scholarships[index - 1]?.attributes?.location ===
+          experience.attributes.location
+        }
+        attributes={experience.attributes}
+      />
     ))}
-    
   </View>
 );
 

@@ -43,16 +43,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     fontFamily: "Fira Code",
   },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
   title: {
     fontSize: 16,
-    padding: "20 20 0 20",
+    lineHeight: 1,
+    padding: "0 20 0 20",
     color: "black",
     fontWeight: "semibold",
+    position: 'relative',
   },
 });
 
@@ -60,7 +57,7 @@ const Layout = ({ experiences, informations, scholarships }: IProps) => (
   <Document>
     <Page size={EPageSize.letter} style={styles.page}>
       <Heading informations={informations} />
-      <Text style={styles.title}>Expérience profesionnel</Text>
+      <Text style={styles.title}>Expériences</Text>
       <Experiences experiences={experiences} />
       <Text style={styles.title}>Études</Text>
       <Scholarships scholarships={scholarships} />

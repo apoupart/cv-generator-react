@@ -1,7 +1,6 @@
 import { View, StyleSheet } from "@react-pdf/renderer";
 import Html from 'react-pdf-html';
 import { IContactInformation } from "../../interface/api-element";
-import "./About.css";
 
 interface IProps {
   informations: IContactInformation;
@@ -9,29 +8,23 @@ interface IProps {
 
 const styles = StyleSheet.create({
   about: {
-    padding: "8pt 20pt 24pt 20pt",
+    padding: "2pt 20pt 24pt 20pt",
     fontSize: 11,
     color: 'black',
   },
   aboutText: {
     fontSize: 11,
   },
-  li_bullet: {
-    width: 25,
-    textAlign: "right",
-    paddingRight: 10,
-    margin: 0,
-    letterSpacing: 1.15,
-  },
 });
 
 const stylesheet = {
-  li_bullet: {
-    width: 14,
-    textAlign: "right",
-    lineHeight: 1.5,
-    paddingBottom: 6,
-  }
+  li: {
+    listStyleType:'none',
+    borderLeft: '1.5pt solid #548199',
+    paddingLeft: '12pt',
+    fontSize: 10,
+    marginBottom: 4,
+  },
 };
 
 const About = ({ informations }: IProps) => {

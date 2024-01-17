@@ -2,76 +2,71 @@ import { StyleSheet } from "@react-pdf/renderer";
 
 export const style1 = StyleSheet.create({
   experience: {
-    marginTop: 16,
+    marginTop: 12,
     position: 'relative',
   },
   isSame: {
   },
   isPrev: {
     marginTop: 0,
-    paddingTop: 10,
   },
   title: {
+    marginTop: '-2pt',
     lineHeight: "1rem",
-    fontSize: 14,
+    fontSize: 12,
     color: "#2f333d",
     fontWeight: "bold",
-    marginLeft: 16
+    marginLeft: 12
+  },
+  isPrevTitle: {
+    marginTop: '8pt',
   },
   subtitle: {
-    fontSize: 12,
+    fontSize: 10,
+    lineHeight: 0,
+    marginBottom: "-2pt",
     fontWeight: "bold",
     color: "#548199",
   },
   date: {
-    fontSize: 9,
-    fontWeight: "light",
-    color: "#282c34",
+    fontSize: 8,
+    marginTop: '2pt',
+    fontWeight: "semibold",
+    color: "#2a404c",
   },
   subtitleWrapper: {
     alignItems: "flex-start",
-    marginBottom: 3,
+    marginBottom: 1,
     flexDirection: "column",
     gap: 0,
-    marginLeft: 16,
+    marginLeft: 12,
   },
   description: {
     marginTop: "2pt",
-    lineHeight: 1.25,
+    lineHeight: 1.15,
     fontSize: 10,
-    marginBottom: "4pt",
+    marginBottom: "3pt",
     color: "black",
-    marginLeft: 16,
+    marginLeft: 12,
   },
   skill: {
     display: "flex",
     flexDirection: "row",
-    fontSize: 8,
+    fontSize: 7,
     textTransform: "uppercase",
-    fontWeight: "light",
+    fontWeight: "bold",
     color: "#282c34",
-    marginLeft: 16,
+    marginLeft: 12,
   },
   companyLine: {
     position: "absolute",
     top: "0",
     left: "0",
-    height: "100%",
+    height: "calc(100% + 18pt)",
     width: "1.5pt",
     backgroundColor: "#548199",
     content: "",
     fontSize: 10,
-    // &::before {
-    //   position: "absolute",
-    // top: "0",
-    // left: "0",
-    // backgroundColor: "red",
-    // content: "",
-    // fontSize: 10,
-    // width: "4pt",
-    // height: "4pt",
-    // borderRadius: 50,
-    // }
   },
 });
 

@@ -7,9 +7,19 @@ export interface IExperience {
     isCurrentJob: boolean;
     skillList?: string;
 }
+export interface ICardAttribute {
+    [x: string]: ICardAttribute;
+    title: string;
+    location: string;
+    description: string;
+    startDate: string,
+    endDate?: string,
+    skillList?: string;
+    isCurrent: boolean;
+}
 
 export interface IExperiencesList {
-    attributes: IExperience;
+    attributes: ICardAttribute;
     id: number;
 }
 

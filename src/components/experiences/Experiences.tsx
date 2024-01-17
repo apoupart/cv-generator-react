@@ -2,6 +2,7 @@
 import { View, StyleSheet } from "@react-pdf/renderer";
 import { IExperiencesList } from "../../interface/api-element";
 import Experience from "../experience/Experience";
+import Card from "../card/Card";
 
 interface IProps {
   experiences: Array<IExperiencesList>
@@ -33,15 +34,15 @@ const styles = StyleSheet.create({
 const Experiences = ({ experiences }: IProps) => (
   <View style={styles.wrapper}>
     {experiences.map((experience: IExperiencesList, index: number) => (
-      <Experience
+      <Card
         key={experience.id}
         isNextSameCompany={
-          experiences[index + 1]?.attributes?.company ===
-          experience.attributes.company
+          experiences[index + 1]?.attributes?.location ===
+          experience.attributes.location
         }
         isPrevSameCompany={
-          experiences[index - 1]?.attributes?.company ===
-          experience.attributes.company
+          experiences[index - 1]?.attributes?.location ===
+          experience.attributes.location
         }
         attributes={experience.attributes}
       />

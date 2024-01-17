@@ -1,15 +1,15 @@
 import { Text, View } from "@react-pdf/renderer";
-import { IExperience } from "../../interface/api-element";
+import { ICardAttribute, IExperience } from "../../interface/api-element";
 import useDateDifference from "../../hook/useDateDifference";
-import { style1, style2 } from "./ExperienceStyle";
+import { style1, style2 } from "./CardStyles";
 
 interface IProps {
-  attributes: IExperience;
+  attributes: ICardAttribute;
   isNextSameCompany?: boolean;
   isPrevSameCompany?: boolean;
 }
 
-const Experience = ({
+const Card = ({
   attributes,
   isNextSameCompany = false,
   isPrevSameCompany = false,
@@ -19,20 +19,16 @@ const Experience = ({
     styles = style1;
   }
   const {
-    company,
+    location,
     title,
     description,
     startDate,
     endDate,
-    isCurrentJob = false,
+    isCurrent = false,
     skillList,
   } = attributes;
 
-  const date: string = useDateDifference(
-    startDate,
-    endDate || "",
-    isCurrentJob
-  );
+  const date: string = useDateDifference(startDate, endDate || "", isCurrent);
 
   const skill = skillList?.split(",").map((skill, index) => (
     <Text>
@@ -50,15 +46,20 @@ const Experience = ({
       ]}
     >
       <View style={styles?.companyLine} />
-      {!isPrevSameCompany && <Text style={styles.title}>{company}</Text>}
-      <View style={styles.subtitleWrapper}>
+      {!isPrevSameCompany && <Text style={[styles?.title]}>{location}</Text>}
+      <View
+        style={[
+          styles.subtitleWrapper,
+          isPrevSameCompany && styles?.isPrevTitle,
+        ]}
+      >
         <Text style={styles.subtitle}>{title}</Text>
         {!!date && <Text style={styles.date}>{date}</Text>}
       </View>
-      <Text style={styles.description}>{description}</Text>
-      <View style={styles.skill}>{skill}</View>
+      {description && <Text style={styles.description}>{description}</Text>}
+      {skill && <View style={styles.skill}>{skill}</View>}
     </View>
   );
 };
 
-export default Experience;
+export default Card;
