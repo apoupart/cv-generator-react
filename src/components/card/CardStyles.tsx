@@ -2,29 +2,30 @@ import { StyleSheet } from "@react-pdf/renderer";
 
 export const style1 = StyleSheet.create({
   experience: {
-    marginTop: 12,
+    marginTop: 10,
     position: 'relative',
   },
   isSame: {
   },
   isPrev: {
-    marginTop: 0,
+    marginTop: -2,
   },
   title: {
-    marginTop: '-2pt',
+    marginTop: '-4pt',
     lineHeight: "1rem",
     fontSize: 12,
     color: "#2f333d",
     fontWeight: "bold",
-    marginLeft: 12
+    marginLeft: 0
   },
   isPrevTitle: {
-    marginTop: '8pt',
+    marginTop: '6pt',
   },
   subtitle: {
     fontSize: 10,
     lineHeight: 0,
-    marginBottom: "-2pt",
+    marginTop: "-1pt",
+    marginBottom: "-4pt",
     fontWeight: "bold",
     color: "#548199",
   },
@@ -39,15 +40,16 @@ export const style1 = StyleSheet.create({
     marginBottom: 1,
     flexDirection: "column",
     gap: 0,
-    marginLeft: 12,
+    marginLeft: 0,
   },
   description: {
-    marginTop: "2pt",
-    lineHeight: 1.15,
-    fontSize: 10,
-    marginBottom: "3pt",
     color: "black",
-    marginLeft: 12,
+    marginTop: "0pt",
+    lineHeight: 1.15,
+    fontSize: 8,
+    letterSpacing: -0.2,
+    marginBottom: "3pt",
+    marginLeft: 0,
   },
   skill: {
     display: "flex",
@@ -56,15 +58,15 @@ export const style1 = StyleSheet.create({
     textTransform: "uppercase",
     fontWeight: "bold",
     color: "#282c34",
-    marginLeft: 12,
+    marginLeft: 0,
   },
   companyLine: {
     position: "absolute",
     top: "0",
-    left: "0",
+    left: "-10pt",
     height: "calc(100% + 18pt)",
-    width: "1.5pt",
-    backgroundColor: "#548199",
+    width: "1pt",
+    backgroundColor: "#cadce6",
     content: "",
     fontSize: 10,
   },

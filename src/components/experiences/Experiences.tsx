@@ -1,7 +1,6 @@
 
 import { View, StyleSheet } from "@react-pdf/renderer";
 import { IExperiencesList } from "../../interface/api-element";
-import Experience from "../experience/Experience";
 import Card from "../card/Card";
 
 interface IProps {

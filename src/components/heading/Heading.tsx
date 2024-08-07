@@ -11,19 +11,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#282c34",
     justifyContent: "space-between",
     color: "#f2f2f2",
-    padding: "20pt 20pt 24pt 20pt",
-    marginBottom: 20,
+    padding: "12pt 20pt 16pt 20pt",
+    marginBottom: 12,
   },
   heading: {
     flexDirection: "column",
   },
   title: {
     lineHeight: 1,
-    fontSize: "26pt",
+    fontSize: "14pt",
     color: "#f2f2f2",
   },
   expertise: {
-    fontSize: "14pt",
+    fontSize: "12pt",
     lineHeight: 1,
     color: "#abb2ba",
     marginBottom: 8,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   link: {
     color: "#f2f2f2",
-    fontSize: 14,
+    fontSize: 10,
     textDecoration: "none",
   },
 });

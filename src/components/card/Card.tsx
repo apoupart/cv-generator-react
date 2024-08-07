@@ -1,4 +1,5 @@
 import { Text, View } from "@react-pdf/renderer";
+import Html from 'react-pdf-html';
 import { ICardAttribute, IExperience } from "../../interface/api-element";
 import useDateDifference from "../../hook/useDateDifference";
 import { style1, style2 } from "./CardStyles";
@@ -28,6 +29,20 @@ const Card = ({
     skillList,
   } = attributes;
 
+  const stylesheet = {
+    // clear margins for all <p> tags
+    p: {
+      margin: 0,
+      color: "black",
+    },
+    // add pink background color to elements with class="special"
+    u: {
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      color: '#040404'
+    },
+  };
+
   const date: string = useDateDifference(startDate, endDate || "", isCurrent);
 
   const skill = skillList?.split(",").map((skill, index) => (
@@ -56,8 +71,8 @@ const Card = ({
         <Text style={styles.subtitle}>{title}</Text>
         {!!date && <Text style={styles.date}>{date}</Text>}
       </View>
-      {description && <Text style={styles.description}>{description}</Text>}
-      {skill && <View style={styles.skill}>{skill}</View>}
+      {description && <Html stylesheet={stylesheet} style={styles.description}>{description}</Html>}
+      {/* {skill && <View style={styles.skill}>{skill}</View>} */}
     </View>
   );
 };
